@@ -13,7 +13,7 @@ export const TaskManagement: React.FC = () => {
             <div className="relative max-w-sm mx-auto lg:mx-0">
               <div className="absolute -inset-4 bg-gradient-to-tr from-cafeting-green/30 to-teal-500/20 rounded-[3rem] blur-2xl"></div>
               <img
-                src="/task_management.jpg"
+                src="/new/task_management.png"
                 alt="任务管理"
                 className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
               />

@@ -13,7 +13,7 @@ export const FocusMode: React.FC = () => {
             <div className="relative max-w-sm mx-auto lg:mx-0">
               <div className="absolute -inset-4 bg-gradient-to-bl from-orange-500/20 to-cafeting-green/20 rounded-[3rem] blur-2xl"></div>
               <img
-                src="/focus_mode.jpg"
+                src="/new/focus_mode.png"
                 alt="专注模式"
                 className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
               />
