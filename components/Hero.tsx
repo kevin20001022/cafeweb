@@ -25,29 +25,29 @@ export const Hero: React.FC = () => {
               搶先預約體驗
             </div>
 
-            <h1 className="text-4xl md:text-6xl font-[800] tracking-tight text-cafeting-black dark:text-white mb-6 leading-[1.1]">
+            <h1 className="text-3xl md:text-6xl font-[800] tracking-tight text-cafeting-black dark:text-white mb-6 leading-[1.1]">
               Cafeting Pass<br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cafeting-green to-teal-500">
                 首創咖啡廳預約系統
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-cafeting-gray dark:text-gray-300 mb-10 leading-relaxed font-normal">
+            <p className="text-base md:text-xl text-cafeting-gray dark:text-gray-300 mb-10 leading-relaxed font-normal">
               擺脫不確定性。預訂座位讓您每一分鐘都轉化為產出。
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto justify-center lg:justify-start">
-              <Button onClick={scrollToForm} className="text-lg px-8 py-4">
+              <Button onClick={scrollToForm} className="text-sm md:text-base px-6 py-3 md:px-8 md:py-4">
                 成為首批用戶
               </Button>
-              <Button onClick={() => document.getElementById('customer-value')?.scrollIntoView({behavior: 'smooth'})} variant="outline" className="text-lg px-8 py-4 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:border-white">
+              <Button onClick={() => document.getElementById('customer-value')?.scrollIntoView({behavior: 'smooth'})} variant="outline" className="text-sm md:text-base px-6 py-3 md:px-8 md:py-4 dark:text-gray-300 dark:border-gray-600 dark:hover:text-white dark:hover:border-white">
                 了解更多
               </Button>
             </div>
           </div>
 
           {/* Abstract UI Visualization (CSS Only) */}
-          <div className="flex-1 w-full max-w-lg lg:max-w-none relative">
+          <div className="flex-1 w-full max-w-lg lg:max-w-none relative overflow-hidden">
             {/* Main Card (The App) */}
             <div className="relative bg-white dark:bg-cafeting-dark-surface rounded-2xl shadow-2xl border border-gray-200 dark:border-cafeting-dark-border p-4 z-20 overflow-hidden backdrop-blur-sm">
                {/* Header UI */}
