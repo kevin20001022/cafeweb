@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 3000;
 // 中间件
 app.use(cors());
 app.use(express.json());
-app.use(express.static('dist'));
 
 // 初始化 Notion 客户端
 const notion = new Client({
@@ -16,6 +15,12 @@ const notion = new Client({
 });
 
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
+
+// ⚠️ API 路由必须在静态文件服务之前！
+// 健康检查
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 
 // API 路由：提交表单到 Notion
 app.post('/api/submit-lead', async (req, res) => {
@@ -82,10 +87,8 @@ app.post('/api/submit-lead', async (req, res) => {
   }
 });
 
-// 健康检查
-app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok' });
-});
+// 静态文件服务（必须在 API 路由之后）
+app.use(express.static('dist'));
 
 // 所有其他路由返回 index.html（SPA 支持）
 app.get('*', (req, res) => {
