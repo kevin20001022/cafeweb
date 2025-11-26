@@ -61,7 +61,7 @@ app.post('/api/submit-lead', async (req, res) => {
         },
         Role: {
           select: {
-            name: role === 'WORKER' ? '遠端工作者' : '咖啡廳業者',
+            name: role === 'worker' ? '遠端工作者' : '咖啡廳業者',
           },
         },
         備註: {
