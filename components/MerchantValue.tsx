@@ -115,9 +115,9 @@ export const MerchantValue: React.FC = () => {
                   </div>
                </div>
             </div>
-            
+
             {/* Background blob */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-r from-cafeting-green/10 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-gradient-to-r from-cafeting-green/10 to-transparent rounded-full blur-3xl -z-10 pointer-events-none"></div>
           </div>
 
         </div>

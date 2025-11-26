@@ -51,9 +51,9 @@ export const LeadForm: React.FC = () => {
     <section id="join-form" className="py-24 relative overflow-hidden border-t border-gray-200 dark:border-gray-800 transition-colors duration-300 bg-gray-50 dark:bg-[#111111]">
       {/* Background Decor */}
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none"></div>
-      
+
       {/* Ambient Gradient */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cafeting-green/5 dark:bg-cafeting-green/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[600px] h-[600px] bg-cafeting-green/5 dark:bg-cafeting-green/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-2xl mx-auto px-6 relative z-10">
         <div className="text-center mb-10">

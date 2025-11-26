@@ -13,7 +13,7 @@ export const Hero: React.FC = () => {
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden transition-colors duration-300 bg-white dark:bg-[#111111]">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.6] pointer-events-none"></div>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cafeting-green/10 dark:bg-cafeting-green/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cafeting-green/10 dark:bg-cafeting-green/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
@@ -108,7 +108,7 @@ export const Hero: React.FC = () => {
             </div>
 
             {/* Decorative Elements behind */}
-            <div className="absolute -inset-4 bg-gradient-to-tr from-cafeting-green/20 to-blue-500/20 rounded-[2rem] blur-xl z-0 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-tr from-cafeting-green/20 to-emerald-500/20 rounded-[2rem] blur-xl z-0 pointer-events-none"></div>
           </div>
         </div>
       </div>
