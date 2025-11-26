@@ -25,10 +25,10 @@ export const InfoDisplay: React.FC = () => {
             <div className="inline-block px-3 py-1 bg-cafeting-green/10 border border-cafeting-green/30 rounded-full text-cafeting-green text-sm font-semibold mb-4">
               Feature 02
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-5xl font-bold text-white mb-6">
               清晰的資訊展示
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-300 leading-relaxed">
               豐富的指標篩選，找到最適合你的命定咖啡館。
             </p>
           </div>

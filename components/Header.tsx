@@ -102,8 +102,8 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
 
       {/* 移动端菜单 */}
       {mobileMenuOpen && (
-        <div className="md:hidden" style={{backgroundColor: '#111111'}}>
-          <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-1">
+        <div className="md:hidden fixed inset-0 top-[72px] overflow-y-auto" style={{backgroundColor: '#111111'}}>
+          <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-1 min-h-full">
             {/* 页面导航 */}
             <button
               onClick={() => handlePageChange('home')}

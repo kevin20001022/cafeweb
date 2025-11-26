@@ -25,10 +25,10 @@ export const MapFeature: React.FC = () => {
             <div className="inline-block px-3 py-1 bg-cafeting-green/10 border border-cafeting-green/30 rounded-full text-cafeting-green text-sm font-semibold mb-4">
               Feature 01
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-5xl font-bold text-white mb-6">
               探索地圖
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-300 leading-relaxed">
               輕鬆發現周邊精選咖啡館，找尋工作環境再也不是問題。
             </p>
           </div>

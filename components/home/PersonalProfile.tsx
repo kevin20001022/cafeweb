@@ -25,10 +25,10 @@ export const PersonalProfile: React.FC = () => {
             <div className="inline-block px-3 py-1 bg-cafeting-green/10 border border-cafeting-green/30 rounded-full text-cafeting-green text-sm font-semibold mb-4">
               Feature 06
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-5xl font-bold text-white mb-6">
               個人檔案
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-300 leading-relaxed">
               收藏喜愛的咖啡廳，記錄你的工作及學習，培養高效習慣。
             </p>
           </div>

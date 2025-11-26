@@ -25,10 +25,10 @@ export const TaskManagement: React.FC = () => {
             <div className="inline-block px-3 py-1 bg-cafeting-green/10 border border-cafeting-green/30 rounded-full text-cafeting-green text-sm font-semibold mb-4">
               Feature 03
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-5xl font-bold text-white mb-6">
               任務管理
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-300 leading-relaxed">
               簡單快速建立待完成任務，輕鬆管理當日行程。
             </p>
           </div>

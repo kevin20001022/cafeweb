@@ -25,10 +25,10 @@ export const FocusMode: React.FC = () => {
             <div className="inline-block px-3 py-1 bg-cafeting-green/10 border border-cafeting-green/30 rounded-full text-cafeting-green text-sm font-semibold mb-4">
               Feature 04
             </div>
-            <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+            <h2 className="text-2xl md:text-5xl font-bold text-white mb-6">
               專注模式
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-base md:text-xl text-gray-300 leading-relaxed">
               打造專屬於你的專注時刻，透過番茄鐘工作法，讓工作與學習更加高效。
             </p>
           </div>
