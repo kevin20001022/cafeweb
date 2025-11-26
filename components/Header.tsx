@@ -114,8 +114,8 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
 
       {/* 移动端菜单 */}
       {mobileMenuOpen && (
-        <div className={`md:hidden fixed inset-0 ${scrolled ? 'top-[60px]' : 'top-[76px]'} overflow-y-auto z-50`} style={{backgroundColor: '#111111'}}>
-          <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-1 min-h-full">
+        <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-[#111111] overflow-y-auto pt-20">
+          <nav className="px-6 py-8 flex flex-col gap-1">
             {/* 页面导航 */}
             <button
               onClick={() => handlePageChange('home')}
@@ -157,7 +157,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             <a
               href="#about"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-sm text-gray-500 hover:text-gray-300 transition-all py-3 px-3 rounded-lg"
+              className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               關於我們
             </a>
@@ -166,7 +166,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             <a
               href="#privacy"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-sm text-gray-500 hover:text-gray-300 transition-all py-3 px-3 rounded-lg"
+              className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               隱私政策
             </a>
@@ -175,7 +175,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             <a
               href="#terms"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-sm text-gray-500 hover:text-gray-300 transition-all py-3 px-3 rounded-lg"
+              className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               服務條款
             </a>
@@ -184,7 +184,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-sm text-gray-500 hover:text-gray-300 transition-all py-3 px-3 rounded-lg"
+              className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               聯絡我們
             </a>
@@ -193,7 +193,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             {currentPage === 'pass' && (
               <button
                 onClick={toggleTheme}
-                className="text-left text-sm text-gray-500 hover:text-gray-300 transition-all py-3 px-3 rounded-lg mt-2"
+                className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg mt-2"
               >
                 {isDark ? '切換至淺色模式' : '切換至深色模式'}
               </button>
