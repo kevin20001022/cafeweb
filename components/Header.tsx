@@ -114,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
 
       {/* 移动端菜单 */}
       {mobileMenuOpen && (
-        <div className={`md:hidden fixed inset-0 ${scrolled ? 'top-[60px]' : 'top-[76px]'} overflow-y-auto z-30`} style={{backgroundColor: '#111111'}}>
+        <div className={`md:hidden fixed inset-0 ${scrolled ? 'top-[60px]' : 'top-[76px]'} overflow-y-auto z-50`} style={{backgroundColor: '#111111'}}>
           <nav className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-1 min-h-full">
             {/* 页面导航 */}
             <button
