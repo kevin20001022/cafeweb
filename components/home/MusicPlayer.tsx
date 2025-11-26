@@ -16,7 +16,7 @@ export const MusicPlayer: React.FC = () => {
               <img
                 src="/new/coffee_music.png"
                 alt="音乐播放"
-                className="relative rounded-3xl shadow-2xl w-full"
+                className="relative w-full"
               />
             </div>
           </div>

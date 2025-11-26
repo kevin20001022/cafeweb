@@ -16,7 +16,7 @@ export const MapFeature: React.FC = () => {
               <img
                 src="/new/map_feature.png"
                 alt="探索地图"
-                className="relative rounded-3xl shadow-2xl w-full"
+                className="relative w-full"
               />
             </div>
           </div>

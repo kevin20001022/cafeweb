@@ -16,7 +16,7 @@ export const FocusMode: React.FC = () => {
               <img
                 src="/new/focus_mode.png"
                 alt="专注模式"
-                className="relative rounded-3xl shadow-2xl w-full"
+                className="relative w-full"
               />
             </div>
           </div>

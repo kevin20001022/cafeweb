@@ -16,7 +16,7 @@ export const PersonalProfile: React.FC = () => {
               <img
                 src="/new/personal_profile.png"
                 alt="个人档案"
-                className="relative rounded-3xl shadow-2xl w-full"
+                className="relative w-full"
               />
             </div>
           </div>

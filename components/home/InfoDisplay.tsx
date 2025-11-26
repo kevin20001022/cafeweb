@@ -16,7 +16,7 @@ export const InfoDisplay: React.FC = () => {
               <img
                 src="/new/map_callout.png"
                 alt="清晰的资讯展示"
-                className="relative rounded-3xl shadow-2xl w-full"
+                className="relative w-full"
               />
             </div>
           </div>
