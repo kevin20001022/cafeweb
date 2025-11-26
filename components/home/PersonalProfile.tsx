@@ -11,7 +11,7 @@ export const PersonalProfile: React.FC = () => {
           {/* 图片右 */}
           <div className="flex-1 w-full lg:w-auto">
             <div className="relative max-w-sm mx-auto lg:mx-0">
-              <div className="absolute -inset-4 bg-gradient-to-bl from-cafeting-green/30 to-cyan-500/20 rounded-[3rem] blur-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-bl from-cafeting-green/15 to-cyan-500/10 rounded-3xl blur-xl"></div>
               <img
                 src="/new/personal_profile.png"
                 alt="个人档案"
