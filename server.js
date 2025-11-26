@@ -3,7 +3,7 @@ import cors from 'cors';
 import { Client } from '@notionhq/client';
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 // 中间件
 app.use(cors());
