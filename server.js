@@ -1,22 +1,24 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
+import express from 'express';
+import cors from 'cors';
 import { Client } from '@notionhq/client';
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// 中间件
+app.use(cors());
+app.use(express.json());
+app.use(express.static('dist'));
 
 // 初始化 Notion 客户端
 const notion = new Client({
   auth: process.env.NOTION_API_KEY,
 });
 
-const DATABASE_ID = process.env.NOTION_DATABASE_ID!;
+const DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
-export default async function handler(
-  req: VercelRequest,
-  res: VercelResponse
-) {
-  // 只允许 POST 请求
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
-
+// API 路由：提交表单到 Notion
+app.post('/api/submit-lead', async (req, res) => {
   try {
     const { name, email, role, notes } = req.body;
 
@@ -71,11 +73,25 @@ export default async function handler(
       message: 'Lead submitted successfully'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Error submitting to Notion:', error);
     return res.status(500).json({
       error: 'Failed to submit lead',
       details: error.message
     });
   }
-}
+});
+
+// 健康检查
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
+
+// 所有其他路由返回 index.html（SPA 支持）
+app.get('*', (req, res) => {
+  res.sendFile('index.html', { root: 'dist' });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
