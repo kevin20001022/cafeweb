@@ -17,7 +17,7 @@ export const HomeHero: React.FC = () => {
           </div>
 
           <h1 className="text-3xl md:text-7xl font-[800] tracking-tight text-white mb-6 leading-[1.1]">
-            為工作而生的<br />
+            <span className="whitespace-nowrap">為工作而生的</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cafeting-green to-emerald-400">
               咖啡地圖
             </span>
@@ -28,19 +28,12 @@ export const HomeHero: React.FC = () => {
             Cafeting 為您精選每一處完美工作據點。
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div className="flex justify-center">
             <Button
               onClick={() => window.open('https://apps.apple.com/tw/app/cafeting/id6737536512', '_blank')}
-              className="text-lg px-10 py-5 shadow-2xl shadow-cafeting-green/20"
+              className="text-sm md:text-base px-6 py-3 md:px-8 md:py-4 shadow-2xl shadow-cafeting-green/20"
             >
               Download App
-            </Button>
-            <Button
-              onClick={() => document.getElementById('features')?.scrollIntoView({behavior: 'smooth'})}
-              variant="outline"
-              className="text-lg px-10 py-5 text-gray-300 border-gray-600 hover:text-white hover:border-white"
-            >
-              探索功能
             </Button>
           </div>
         </div>

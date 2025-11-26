@@ -21,6 +21,18 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // 禁用/恢复 body 滚动
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const handlePageChange = (page: PageType) => {
     setCurrentPage(page);
     setMobileMenuOpen(false); // 关闭移动菜单
@@ -78,7 +90,7 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
         {/* 移动端：只有汉堡菜单按钮 */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-cafeting-black dark:text-white"
+          className="md:hidden p-2 transition-colors text-cafeting-black dark:text-white"
           aria-label="Toggle Menu"
         >
           {mobileMenuOpen ? (
