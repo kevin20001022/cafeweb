@@ -3,6 +3,8 @@ import React from 'react';
 export const MapFeature: React.FC = () => {
   return (
     <section className="py-24 relative overflow-hidden" style={{backgroundColor: '#111111'}}>
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-[0.15] pointer-events-none"></div>
       <div className="absolute top-1/2 left-1/4 w-[400px] h-[400px] bg-cafeting-green/10 rounded-full blur-[120px] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -11,7 +13,6 @@ export const MapFeature: React.FC = () => {
           {/* 图片左 */}
           <div className="flex-1 w-full lg:w-auto">
             <div className="relative max-w-sm mx-auto lg:mx-0">
-              <div className="absolute inset-0 bg-gradient-to-tr from-cafeting-green/15 to-blue-500/10 rounded-3xl blur-xl"></div>
               <img
                 src="/new/map_feature.png"
                 alt="探索地图"
