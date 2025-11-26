@@ -15,7 +15,7 @@ export const MapFeature: React.FC = () => {
               <img
                 src="/new/map_feature.png"
                 alt="探索地图"
-                className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>

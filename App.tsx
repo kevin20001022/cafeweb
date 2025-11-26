@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header';
 import { HomePage } from './components/pages/HomePage';
 import { CafetingPassPage } from './components/pages/CafetingPassPage';
+import { PrivacyPage } from './components/pages/PrivacyPage';
 import { Footer } from './components/Footer';
 
-export type PageType = 'home' | 'pass';
+export type PageType = 'home' | 'pass' | 'privacy';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -39,9 +40,9 @@ function App() {
         setCurrentPage={setCurrentPage}
       />
       <main>
-        {currentPage === 'home' ? <HomePage /> : <CafetingPassPage />}
+        {currentPage === 'home' ? <HomePage /> : currentPage === 'pass' ? <CafetingPassPage /> : <PrivacyPage />}
       </main>
-      <Footer currentPage={currentPage} />
+      <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
     </div>
   );
 }

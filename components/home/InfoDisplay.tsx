@@ -15,7 +15,7 @@ export const InfoDisplay: React.FC = () => {
               <img
                 src="/new/map_callout.png"
                 alt="清晰的资讯展示"
-                className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>

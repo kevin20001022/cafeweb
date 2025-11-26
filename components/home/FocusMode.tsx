@@ -15,7 +15,7 @@ export const FocusMode: React.FC = () => {
               <img
                 src="/new/focus_mode.png"
                 alt="专注模式"
-                className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>

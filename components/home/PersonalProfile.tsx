@@ -15,7 +15,7 @@ export const PersonalProfile: React.FC = () => {
               <img
                 src="/new/personal_profile.png"
                 alt="个人档案"
-                className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>

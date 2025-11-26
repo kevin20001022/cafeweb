@@ -15,7 +15,7 @@ export const TaskManagement: React.FC = () => {
               <img
                 src="/new/task_management.png"
                 alt="任务管理"
-                className="relative rounded-3xl shadow-2xl w-full transform hover:scale-105 transition-transform duration-500"
+                className="relative rounded-3xl shadow-2xl w-full"
               />
             </div>
           </div>

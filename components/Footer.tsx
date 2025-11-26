@@ -1,10 +1,12 @@
 import React from 'react';
+import { PageType } from '../App';
 
 interface FooterProps {
-  currentPage?: 'home' | 'pass';
+  currentPage?: PageType;
+  setCurrentPage?: (page: PageType) => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ currentPage = 'home' }) => {
+export const Footer: React.FC<FooterProps> = ({ currentPage = 'home', setCurrentPage }) => {
   return (
     <footer className={`border-t border-gray-200 dark:border-gray-800 py-12 relative z-10 transition-colors duration-300 ${currentPage === 'pass' ? 'bg-white dark:bg-[#1a1a1a]' : ''}`} style={currentPage === 'home' ? {backgroundColor: '#1a1a1a'} : undefined}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
@@ -20,9 +22,9 @@ export const Footer: React.FC<FooterProps> = ({ currentPage = 'home' }) => {
         </div>
 
         <div className="flex gap-6">
-          <a href="#" className="text-cafeting-gray dark:text-gray-400 hover:text-cafeting-green dark:hover:text-cafeting-green transition-colors text-sm">Privacy Policy</a>
-          <a href="#" className="text-cafeting-gray dark:text-gray-400 hover:text-cafeting-green dark:hover:text-cafeting-green transition-colors text-sm">Terms of Service</a>
-          <a href="#" className="text-cafeting-gray dark:text-gray-400 hover:text-cafeting-green dark:hover:text-cafeting-green transition-colors text-sm">Contact</a>
+          <button onClick={() => setCurrentPage?.('privacy')} className="text-cafeting-gray dark:text-gray-400 hover:text-cafeting-green dark:hover:text-cafeting-green transition-colors text-sm">隱私政策</button>
+          <a href="#" className="text-cafeting-gray dark:text-gray-400 hover:text-cafeting-green dark:hover:text-cafeting-green transition-colors text-sm">服務條款</a>
+          <a href="#" className="text-cafeting-gray dark:text-gray-400 hover:text-cafeting-green dark:hover:text-cafeting-green transition-colors text-sm">聯絡我們</a>
         </div>
       </div>
     </footer>

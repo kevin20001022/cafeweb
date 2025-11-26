@@ -163,13 +163,12 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             </a>
 
             {/* Privacy Policy */}
-            <a
-              href="#privacy"
-              onClick={() => setMobileMenuOpen(false)}
+            <button
+              onClick={() => handlePageChange('privacy')}
               className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               隱私政策
-            </a>
+            </button>
 
             {/* Terms of Service */}
             <a
