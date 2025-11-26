@@ -75,27 +75,18 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
            )}
         </nav>
 
-        {/* 移动端：汉堡菜单按钮 + Download 按钮 */}
-        <div className="flex md:hidden items-center gap-3">
-          <Button
-            onClick={() => window.open('https://apps.apple.com/tw/app/cafeting/id6737536512', '_blank')}
-            variant="primary"
-            className="text-xs py-2 px-3 shadow-cafeting-green/20"
-          >
-            Download
-          </Button>
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-cafeting-black dark:text-white"
-            aria-label="Toggle Menu"
-          >
-            {mobileMenuOpen ? (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            )}
-          </button>
-        </div>
+        {/* 移动端：只有汉堡菜单按钮 */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors text-cafeting-black dark:text-white"
+          aria-label="Toggle Menu"
+        >
+          {mobileMenuOpen ? (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          ) : (
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          )}
+        </button>
 
         {/* 桌面端：Download 按钮 */}
         <div className="hidden md:flex items-center gap-4">
@@ -112,46 +103,108 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
       {/* 移动端菜单 */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111111] shadow-lg">
-          <nav className="max-w-7xl mx-auto px-6 py-4 flex flex-col gap-4">
+          <nav className="max-w-7xl mx-auto px-6 py-6 flex flex-col gap-1">
+            {/* 页面导航 */}
             <button
               onClick={() => handlePageChange('home')}
-              className={`text-left text-base font-medium transition-colors py-2 ${
+              className={`text-left text-base font-medium transition-colors py-3 px-2 rounded-lg ${
                 currentPage === 'home'
-                  ? 'text-cafeting-green'
-                  : 'text-cafeting-gray dark:text-gray-400'
+                  ? 'text-cafeting-green bg-cafeting-green/5'
+                  : 'text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
               首頁
             </button>
             <button
               onClick={() => handlePageChange('pass')}
-              className={`text-left text-base font-medium transition-colors py-2 ${
+              className={`text-left text-base font-medium transition-colors py-3 px-2 rounded-lg ${
                 currentPage === 'pass'
-                  ? 'text-cafeting-green'
-                  : 'text-cafeting-gray dark:text-gray-400'
+                  ? 'text-cafeting-green bg-cafeting-green/5'
+                  : 'text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800'
               }`}
             >
               Cafeting Pass
             </button>
 
+            {/* 分隔线 */}
+            <div className="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
+
+            {/* Download App */}
+            <button
+              onClick={() => {
+                window.open('https://apps.apple.com/tw/app/cafeting/id6737536512', '_blank');
+                setMobileMenuOpen(false);
+              }}
+              className="flex items-center gap-3 text-left text-base font-medium text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              下載 App
+            </button>
+
+            {/* 分隔线 */}
+            <div className="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
+
+            {/* 关于我们 */}
+            <a
+              href="#about"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 text-left text-sm text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+              關於我們
+            </a>
+
+            {/* Privacy Policy */}
+            <a
+              href="#privacy"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 text-left text-sm text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              隱私政策
+            </a>
+
+            {/* Terms of Service */}
+            <a
+              href="#terms"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 text-left text-sm text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              服務條款
+            </a>
+
+            {/* Contact */}
+            <a
+              href="#contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="flex items-center gap-3 text-left text-sm text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg transition-colors"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              聯絡我們
+            </a>
+
             {/* Theme Toggle - Only show on Cafeting Pass page */}
             {currentPage === 'pass' && (
-              <button
-                onClick={toggleTheme}
-                className="flex items-center gap-3 text-left text-base font-medium text-cafeting-gray dark:text-gray-400 py-2"
-              >
-                {isDark ? (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M17.66 17.66l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M17.66 6.34l1.42-1.42"/></svg>
-                    淺色模式
-                  </>
-                ) : (
-                  <>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-                    深色模式
-                  </>
-                )}
-              </button>
+              <>
+                <div className="h-px bg-gray-200 dark:bg-gray-800 my-2"></div>
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-3 text-left text-sm text-cafeting-gray dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 py-3 px-2 rounded-lg transition-colors"
+                >
+                  {isDark ? (
+                    <>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2"/><path d="M12 21v2"/><path d="M4.22 4.22l1.42 1.42"/><path d="M17.66 17.66l1.42 1.42"/><path d="M1 12h2"/><path d="M21 12h2"/><path d="M4.22 19.78l1.42-1.42"/><path d="M17.66 6.34l1.42-1.42"/></svg>
+                      切換至淺色模式
+                    </>
+                  ) : (
+                    <>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                      切換至深色模式
+                    </>
+                  )}
+                </button>
+              </>
             )}
           </nav>
         </div>
