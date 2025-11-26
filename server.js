@@ -27,6 +27,9 @@ app.post('/api/submit-lead', async (req, res) => {
   try {
     const { name, email, role, notes } = req.body;
 
+    // 调试：打印接收到的数据
+    console.log('Received form data:', { name, email, role, notes });
+
     // 验证必填字段
     if (!name || !email || !role) {
       return res.status(400).json({ error: 'Missing required fields' });
