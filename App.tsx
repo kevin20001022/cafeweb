@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { CustomerValue } from './components/CustomerValue';
-import { Features } from './components/Features';
-import { MerchantValue } from './components/MerchantValue';
-import { LeadForm } from './components/LeadForm';
+import { HomePage } from './components/pages/HomePage';
+import { CafetingPassPage } from './components/pages/CafetingPassPage';
 import { Footer } from './components/Footer';
+
+export type PageType = 'home' | 'pass';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
+  const [currentPage, setCurrentPage] = useState<PageType>('home');
 
   useEffect(() => {
     // Check system preference or saved preference
@@ -32,15 +32,16 @@ function App() {
 
   return (
     <div className="min-h-screen bg-cafeting-white dark:bg-cafeting-dark transition-colors duration-300">
-      <Header toggleTheme={toggleTheme} isDark={isDark} />
+      <Header
+        toggleTheme={toggleTheme}
+        isDark={isDark}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       <main>
-        <Hero />
-        <CustomerValue />
-        {/* <Features /> */}
-        <MerchantValue />
-        <LeadForm />
+        {currentPage === 'home' ? <HomePage /> : <CafetingPassPage />}
       </main>
-      <Footer />
+      <Footer currentPage={currentPage} />
     </div>
   );
 }

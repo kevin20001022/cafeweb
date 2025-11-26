@@ -10,7 +10,7 @@ export const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden transition-colors duration-300">
+    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden transition-colors duration-300 bg-white dark:bg-[#111111]">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.6] pointer-events-none"></div>
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cafeting-green/10 dark:bg-cafeting-green/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>

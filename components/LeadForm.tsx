@@ -21,20 +21,34 @@ export const LeadForm: React.FC = () => {
     e.preventDefault();
     setStatus('loading');
 
-    // Simulate API call to /api/v1/leads
     try {
-      console.log('Sending data to /api/v1/leads:', formData);
-      await new Promise(resolve => setTimeout(resolve, 1500)); // Mock network delay
+      const response = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          role: formData.role,
+          notes: formData.notes,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit');
+      }
+
       setStatus('success');
       setFormData({ name: '', email: '', role: UserRole.WORKER, notes: '' });
     } catch (error) {
-      console.error(error);
+      console.error('Error submitting form:', error);
       setStatus('error');
     }
   };
 
   return (
-    <section id="join-form" className="py-24 relative overflow-hidden bg-white dark:bg-cafeting-dark border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
+    <section id="join-form" className="py-24 relative overflow-hidden border-t border-gray-200 dark:border-gray-800 transition-colors duration-300 bg-gray-50 dark:bg-[#111111]">
       {/* Background Decor */}
       <div className="absolute inset-0 bg-grid-pattern opacity-50 pointer-events-none"></div>
       
@@ -66,15 +80,15 @@ export const LeadForm: React.FC = () => {
         ) : (
           <form onSubmit={handleSubmit} className="space-y-6 bg-white dark:bg-cafeting-dark-surface p-8 rounded-2xl border border-gray-200 dark:border-gray-700 shadow-xl shadow-gray-200/50 dark:shadow-none backdrop-blur-md">
             <div>
-              <label className="block text-sm font-medium text-cafeting-black dark:text-gray-300 mb-3">您的身份</label>
-              <div className="flex gap-3 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <label className="block text-sm font-medium text-cafeting-black dark:text-white mb-3">您的身份</label>
+              <div className="flex gap-3 p-1.5 bg-gray-100 dark:bg-gray-700/50 rounded-lg border border-transparent dark:border-gray-600">
                 <button
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, role: UserRole.WORKER }))}
                   className={`flex-1 px-4 py-3 rounded-md font-medium transition-all duration-200 ${
                     formData.role === UserRole.WORKER
-                      ? 'bg-cafeting-green text-white shadow-md'
-                      : 'text-cafeting-gray dark:text-gray-400 hover:text-cafeting-black dark:hover:text-white'
+                      ? 'bg-cafeting-green text-white shadow-md shadow-cafeting-green/20'
+                      : 'text-cafeting-gray dark:text-gray-300 hover:text-cafeting-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-600/50'
                   }`}
                 >
                   遠端工作者
@@ -84,8 +98,8 @@ export const LeadForm: React.FC = () => {
                   onClick={() => setFormData(prev => ({ ...prev, role: UserRole.MERCHANT }))}
                   className={`flex-1 px-4 py-3 rounded-md font-medium transition-all duration-200 ${
                     formData.role === UserRole.MERCHANT
-                      ? 'bg-cafeting-green text-white shadow-md'
-                      : 'text-cafeting-gray dark:text-gray-400 hover:text-cafeting-black dark:hover:text-white'
+                      ? 'bg-cafeting-green text-white shadow-md shadow-cafeting-green/20'
+                      : 'text-cafeting-gray dark:text-gray-300 hover:text-cafeting-black dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-600/50'
                   }`}
                 >
                   咖啡廳業者

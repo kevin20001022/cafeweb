@@ -1,8 +1,12 @@
 import React from 'react';
 
-export const Footer: React.FC = () => {
+interface FooterProps {
+  currentPage?: 'home' | 'pass';
+}
+
+export const Footer: React.FC<FooterProps> = ({ currentPage = 'home' }) => {
   return (
-    <footer className="bg-white dark:bg-cafeting-dark-surface border-t border-gray-100 dark:border-gray-800 py-12 relative z-10 transition-colors duration-300">
+    <footer className={`border-t border-gray-200 dark:border-gray-800 py-12 relative z-10 transition-colors duration-300 ${currentPage === 'pass' ? 'bg-white dark:bg-[#1a1a1a]' : ''}`} style={currentPage === 'home' ? {backgroundColor: '#1a1a1a'} : undefined}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
            <div className="w-8 h-8 bg-cafeting-black dark:bg-transparent rounded-lg flex items-center justify-center p-1 transition-colors duration-300">

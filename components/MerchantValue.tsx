@@ -10,7 +10,7 @@ export const MerchantValue: React.FC = () => {
   };
 
   return (
-    <section id="merchant-value" className="py-24 bg-gray-50 dark:bg-gray-900/50 overflow-hidden border-t border-gray-100 dark:border-gray-800 transition-colors duration-300">
+    <section id="merchant-value" className="py-24 overflow-hidden border-t border-gray-200 dark:border-gray-800 transition-colors duration-300 bg-white dark:bg-[#111111]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-16">
           
