@@ -2,7 +2,7 @@ import React from 'react';
 
 export const CustomerValue: React.FC = () => {
   return (
-    <section id="customer-value" className="py-24 relative transition-colors duration-300 bg-gray-50 dark:bg-[#111111]">
+    <section id="customer-value" className="py-24 relative overflow-hidden transition-colors duration-300 bg-gray-50 dark:bg-[#111111]">
        {/* Background Decor */}
        <div className="absolute top-0 left-0 w-full h-full bg-dot-pattern opacity-50 pointer-events-none"></div>
 

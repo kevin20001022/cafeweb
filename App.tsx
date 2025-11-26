@@ -31,7 +31,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-cafeting-white dark:bg-cafeting-dark transition-colors duration-300">
+    <div className="min-h-screen overflow-x-hidden bg-cafeting-white dark:bg-cafeting-dark transition-colors duration-300">
       <Header
         toggleTheme={toggleTheme}
         isDark={isDark}
