@@ -91,7 +91,8 @@ app.post('/api/submit-lead', async (req, res) => {
 app.use(express.static('dist'));
 
 // 所有其他路由返回 index.html（SPA 支持）
-app.get('*', (req, res) => {
+// Express 5 不支持 '*'，改用中间件
+app.use((req, res) => {
   res.sendFile('index.html', { root: 'dist' });
 });
 
