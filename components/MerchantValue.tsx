@@ -22,7 +22,7 @@ export const MerchantValue: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-cafeting-black dark:text-white mb-6">
               Work Pass：平衡收益，<br />我們帶來「質」的客源。
             </h2>
-            <p className="text-lg text-cafeting-gray dark:text-gray-300 mb-10 leading-relaxed">
+            <p className="text-sm md:text-lg text-cafeting-gray dark:text-gray-300 mb-10 leading-relaxed">
               Cafeting 不只是導流，更是店家的營收管理夥伴。加入 Work Pass 計劃，讓您的空間價值最大化。
             </p>
 
@@ -33,7 +33,7 @@ export const MerchantValue: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-cafeting-black dark:text-white mb-2">閒置時段變現</h3>
-                  <p className="text-cafeting-gray dark:text-gray-400">
+                  <p className="text-sm md:text-base text-cafeting-gray dark:text-gray-400">
                     透過動態定價機制，將週中離峰時段的空位有效轉化為額外營收，提升坪效。
                   </p>
                 </div>
@@ -45,7 +45,7 @@ export const MerchantValue: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-cafeting-black dark:text-white mb-2">客源篩選機制</h3>
-                  <p className="text-cafeting-gray dark:text-gray-400">
+                  <p className="text-sm md:text-base text-cafeting-gray dark:text-gray-400">
                     我們的用戶皆為購買 Work Pass 的專業工作者，素質高、消費能力強，尊重空間禮儀。
                   </p>
                 </div>
@@ -57,7 +57,7 @@ export const MerchantValue: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-cafeting-black dark:text-white mb-2">無感營運</h3>
-                  <p className="text-cafeting-gray dark:text-gray-400">
+                  <p className="text-sm md:text-base text-cafeting-gray dark:text-gray-400">
                     採預付制度與掃碼核銷，確保店家獲得穩定現金流，同時減少佔位爭議與點餐溝通成本。
                   </p>
                 </div>

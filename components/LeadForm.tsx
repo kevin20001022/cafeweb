@@ -108,7 +108,9 @@ export const LeadForm: React.FC = () => {
             </div>
 
             <div>
-              <label htmlFor="name" className="block text-sm font-medium text-cafeting-black dark:text-gray-300 mb-2">姓名 / 稱呼</label>
+              <label htmlFor="name" className="block text-sm font-medium text-cafeting-black dark:text-gray-300 mb-2">
+                {formData.role === UserRole.MERCHANT ? '店名' : '姓名 / 稱呼'}
+              </label>
               <input
                 type="text"
                 id="name"
@@ -116,7 +118,7 @@ export const LeadForm: React.FC = () => {
                 required
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="請輸入您的姓名"
+                placeholder={formData.role === UserRole.MERCHANT ? '請輸入您的店名' : '請輸入您的姓名'}
                 className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg text-cafeting-black dark:text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-cafeting-green focus:border-transparent transition-all"
               />
             </div>

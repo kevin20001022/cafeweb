@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Button } from './Button';
-import { PageType } from '../App';
 
 interface HeaderProps {
   toggleTheme: () => void;
   isDark: boolean;
-  currentPage: PageType;
-  setCurrentPage: (page: PageType) => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage, setCurrentPage }) => {
+export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,44 +32,58 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
     };
   }, [mobileMenuOpen]);
 
-  const handlePageChange = (page: PageType) => {
-    setCurrentPage(page);
-    setMobileMenuOpen(false); // 关闭移动菜单
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  // 关闭移动菜单
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
   };
 
+  const currentPage = location.pathname === '/' ? 'home' : location.pathname === '/pass' ? 'pass' : location.pathname === '/about' ? 'about' : 'privacy';
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'backdrop-blur-md shadow-sm py-3' : 'py-5'} ${!scrolled && 'bg-transparent'} ${scrolled && currentPage === 'pass' ? 'bg-white/80 dark:bg-[#111111]/80' : ''}`} style={scrolled && currentPage === 'home' ? {backgroundColor: 'rgba(17, 17, 17, 0.8)'} : undefined}>
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'backdrop-blur-md shadow-sm py-3' : 'py-5'} ${!scrolled ? 'bg-transparent' : (currentPage === 'pass' || currentPage === 'about') ? 'bg-white/80 dark:bg-[#111111]/80' : ''}`} style={scrolled && currentPage === 'home' ? {backgroundColor: 'rgba(17, 17, 17, 0.8)'} : undefined}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer group" onClick={() => handlePageChange('home')}>
+        <Link to="/" className="flex items-center gap-2 cursor-pointer group">
            <div className="w-8 h-8 bg-cafeting-black dark:bg-transparent rounded-lg flex items-center justify-center p-1 transition-colors duration-300">
              <img src="/icon.png" alt="Cafeting Logo" className="w-full h-full object-contain transition-transform group-hover:scale-105 duration-200" />
            </div>
            <span className="text-xl font-bold tracking-tight text-cafeting-black dark:text-white">Cafeting</span>
-        </div>
-        
+        </Link>
+
         <nav className="hidden md:flex gap-8 items-center">
-           <button
-             onClick={() => handlePageChange('home')}
-             className={`text-sm font-medium transition-colors ${
-               currentPage === 'home'
+           <NavLink
+             to="/"
+             className={({ isActive }) => `text-sm font-medium transition-colors ${
+               isActive
                  ? 'text-cafeting-green'
                  : 'text-cafeting-gray dark:text-gray-400 hover:text-cafeting-black dark:hover:text-white'
              }`}
            >
              首頁
-           </button>
-           <button
-             onClick={() => handlePageChange('pass')}
-             className={`text-sm font-medium transition-colors ${
-               currentPage === 'pass'
+           </NavLink>
+           <NavLink
+             to="/pass"
+             className={({ isActive }) => `text-sm font-medium transition-colors flex items-center gap-2 ${
+               isActive
                  ? 'text-cafeting-green'
                  : 'text-cafeting-gray dark:text-gray-400 hover:text-cafeting-black dark:hover:text-white'
              }`}
            >
              Cafeting Pass
-           </button>
-           
+             <span className="relative inline-flex items-center px-2 py-0.5 text-[10px] font-bold text-white rounded-full bg-gradient-to-r from-cafeting-green to-emerald-400 shadow-lg shadow-cafeting-green/50 animate-pulse">
+               NEW
+             </span>
+           </NavLink>
+           <NavLink
+             to="/about"
+             className={({ isActive }) => `text-sm font-medium transition-colors ${
+               isActive
+                 ? 'text-cafeting-green'
+                 : 'text-cafeting-gray dark:text-gray-400 hover:text-cafeting-black dark:hover:text-white'
+             }`}
+           >
+             關於我們
+           </NavLink>
+
            {/* Theme Toggle - Only show on Cafeting Pass page */}
            {currentPage === 'pass' && (
              <button
@@ -114,24 +127,44 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
 
       {/* 移动端菜单 */}
       {mobileMenuOpen && (
-        <div className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 bg-[#111111] overflow-y-auto ${scrolled ? 'pt-[60px]' : 'pt-[76px]'}`}>
-          <nav className="px-6 py-8 flex flex-col gap-1">
-            {/* 页面导航 */}
+        <div className="md:hidden fixed top-0 left-0 right-0 bottom-0 z-[9999] bg-[#111111] flex flex-col min-h-screen">
+          {/* 选单内的 Header */}
+          <div className="px-6 py-5 flex items-center justify-between border-b border-gray-800 flex-shrink-0">
+            <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-transparent rounded-lg flex items-center justify-center p-1">
+                <img src="/icon.png" alt="Cafeting Logo" className="w-full h-full object-contain" />
+              </div>
+              <span className="text-xl font-bold tracking-tight text-white">Cafeting</span>
+            </Link>
             <button
-              onClick={() => handlePageChange('home')}
-              className={`text-left text-lg font-medium transition-all py-4 px-3 rounded-lg ${
-                currentPage === 'home'
+              onClick={closeMobileMenu}
+              className="p-2 text-white"
+              aria-label="Close Menu"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+
+          {/* 选单内容 */}
+          <nav className="px-6 py-8 flex flex-col gap-1 flex-1 overflow-y-auto">
+            {/* 页面导航 */}
+            <NavLink
+              to="/"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => `text-left text-lg font-medium transition-all py-4 px-3 rounded-lg ${
+                isActive
                   ? 'text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
             >
               首頁
-            </button>
+            </NavLink>
 
-            <button
-              onClick={() => handlePageChange('pass')}
-              className={`text-left text-lg font-medium transition-all py-4 px-3 rounded-lg flex items-center gap-3 ${
-                currentPage === 'pass'
+            <NavLink
+              to="/pass"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => `text-left text-lg font-medium transition-all py-4 px-3 rounded-lg flex items-center gap-3 ${
+                isActive
                   ? 'text-white'
                   : 'text-gray-400 hover:text-white'
               }`}
@@ -140,13 +173,13 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
               <span className="relative inline-flex items-center px-2 py-0.5 text-[10px] font-bold text-white rounded-full bg-gradient-to-r from-cafeting-green to-emerald-400 shadow-lg shadow-cafeting-green/50 animate-pulse">
                 NEW
               </span>
-            </button>
+            </NavLink>
 
             {/* Download App */}
             <button
               onClick={() => {
                 window.open('https://apps.apple.com/tw/app/cafeting/id6737536512', '_blank');
-                setMobileMenuOpen(false);
+                closeMobileMenu();
               }}
               className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
@@ -154,35 +187,29 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark, currentPage
             </button>
 
             {/* 关于我们 */}
-            <a
-              href="#about"
-              onClick={() => setMobileMenuOpen(false)}
+            <NavLink
+              to="/about"
+              onClick={closeMobileMenu}
               className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               關於我們
-            </a>
+            </NavLink>
 
             {/* Privacy Policy */}
-            <button
-              onClick={() => handlePageChange('privacy')}
+            <NavLink
+              to="/privacy"
+              onClick={closeMobileMenu}
               className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               隱私政策
-            </button>
-
-            {/* Terms of Service */}
-            <a
-              href="#terms"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
-            >
-              服務條款
-            </a>
+            </NavLink>
 
             {/* Contact */}
             <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
+              href="https://www.instagram.com/cafeting.tw/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMobileMenu}
               className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
             >
               聯絡我們

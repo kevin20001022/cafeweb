@@ -41,6 +41,7 @@
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'slide-up': 'slideUp 0.5s ease-out forwards',
               'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'step-flow': 'stepFlow 9s ease-in-out infinite',
             },
             keyframes: {
               float: {
@@ -54,6 +55,18 @@
               fadeIn: {
                 '0%': { opacity: '0' },
                 '100%': { opacity: '1' },
+              },
+              stepFlow: {
+                '0%, 33.33%': {
+                  backgroundColor: '#00A36C',
+                  borderColor: '#00A36C',
+                  boxShadow: '0 10px 15px -3px rgba(0, 163, 108, 0.3)'
+                },
+                '33.34%, 100%': {
+                  backgroundColor: 'transparent',
+                  borderColor: 'rgb(243 244 246)',
+                  boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)'
+                }
               }
             }
           }
@@ -87,6 +100,285 @@
       }
       .dark .bg-dot-pattern {
         background-image: radial-gradient(rgba(0, 163, 108, 0.2) 1px, transparent 1px);
+      }
+
+      /* Step 1 animations - Light mode */
+      @keyframes step1FlowLight {
+        0%, 33.33% {
+          background-color: #00A36C;
+          border-color: #00A36C;
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.4);
+          transform: scale(1.05);
+        }
+        33.34%, 100% {
+          background-color: white;
+          border-color: rgb(243 244 246);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          transform: scale(1);
+        }
+      }
+
+      /* Step 2 animations - Light mode */
+      @keyframes step2FlowLight {
+        0%, 33.33% {
+          background-color: white;
+          border-color: rgb(243 244 246);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          transform: scale(1);
+        }
+        33.34%, 66.66% {
+          background-color: #00A36C;
+          border-color: #00A36C;
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.4);
+          transform: scale(1.05);
+        }
+        66.67%, 100% {
+          background-color: white;
+          border-color: rgb(243 244 246);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          transform: scale(1);
+        }
+      }
+
+      /* Step 3 animations - Light mode */
+      @keyframes step3FlowLight {
+        0%, 66.66% {
+          background-color: white;
+          border-color: rgb(243 244 246);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+          transform: scale(1);
+        }
+        66.67%, 100% {
+          background-color: #00A36C;
+          border-color: #00A36C;
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.4);
+          transform: scale(1.05);
+        }
+      }
+
+      /* Step 1 animations - Dark mode */
+      @keyframes step1FlowDark {
+        0%, 33.33% {
+          background-color: #00A36C;
+          border-color: #00A36C;
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.4);
+          transform: scale(1.05);
+        }
+        33.34%, 100% {
+          background-color: rgb(31 41 55);
+          border-color: rgb(55 65 81);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+          transform: scale(1);
+        }
+      }
+
+      /* Step 2 animations - Dark mode */
+      @keyframes step2FlowDark {
+        0%, 33.33% {
+          background-color: rgb(31 41 55);
+          border-color: rgb(55 65 81);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+          transform: scale(1);
+        }
+        33.34%, 66.66% {
+          background-color: #00A36C;
+          border-color: #00A36C;
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.4);
+          transform: scale(1.05);
+        }
+        66.67%, 100% {
+          background-color: rgb(31 41 55);
+          border-color: rgb(55 65 81);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+          transform: scale(1);
+        }
+      }
+
+      /* Step 3 animations - Dark mode */
+      @keyframes step3FlowDark {
+        0%, 66.66% {
+          background-color: rgb(31 41 55);
+          border-color: rgb(55 65 81);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+          transform: scale(1);
+        }
+        66.67%, 100% {
+          background-color: #00A36C;
+          border-color: #00A36C;
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.4);
+          transform: scale(1.05);
+        }
+      }
+
+      .step-flow-1 {
+        animation: step1FlowLight 9s ease-in-out infinite;
+      }
+      .step-flow-2 {
+        animation: step2FlowLight 9s ease-in-out infinite;
+      }
+      .step-flow-3 {
+        animation: step3FlowLight 9s ease-in-out infinite;
+      }
+
+      .dark .step-flow-1 {
+        animation: step1FlowDark 9s ease-in-out infinite;
+      }
+      .dark .step-flow-2 {
+        animation: step2FlowDark 9s ease-in-out infinite;
+      }
+      .dark .step-flow-3 {
+        animation: step3FlowDark 9s ease-in-out infinite;
+      }
+
+      /* Icon color animations - simplified to sync with background */
+      @keyframes icon1Flow {
+        0%, 33.33% {
+          color: white;
+        }
+        33.34%, 100% {
+          color: #9CA3AF;
+        }
+      }
+
+      @keyframes icon2Flow {
+        0%, 33.33% {
+          color: #9CA3AF;
+        }
+        33.34%, 66.66% {
+          color: white;
+        }
+        66.67%, 100% {
+          color: #9CA3AF;
+        }
+      }
+
+      @keyframes icon3Flow {
+        0%, 66.66% {
+          color: #9CA3AF;
+        }
+        66.67%, 100% {
+          color: white;
+        }
+      }
+
+      .icon-flow-1 {
+        animation: icon1Flow 9s ease-in-out infinite;
+      }
+      .icon-flow-2 {
+        animation: icon2Flow 9s ease-in-out infinite;
+      }
+      .icon-flow-3 {
+        animation: icon3Flow 9s ease-in-out infinite;
+      }
+
+      /* Card flow animations - Light mode */
+      @keyframes card1FlowLight {
+        0%, 33.33% {
+          background-color: white;
+          border-color: rgba(0, 163, 108, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.1);
+        }
+        33.34%, 100% {
+          background-color: rgb(249 250 251);
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      @keyframes card2FlowLight {
+        0%, 33.33% {
+          background-color: rgb(249 250 251);
+          border-color: transparent;
+          box-shadow: none;
+        }
+        33.34%, 66.66% {
+          background-color: white;
+          border-color: rgba(0, 163, 108, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.1);
+        }
+        66.67%, 100% {
+          background-color: rgb(249 250 251);
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      @keyframes card3FlowLight {
+        0%, 66.66% {
+          background-color: rgb(249 250 251);
+          border-color: transparent;
+          box-shadow: none;
+        }
+        66.67%, 100% {
+          background-color: white;
+          border-color: rgba(0, 163, 108, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.1);
+        }
+      }
+
+      /* Card flow animations - Dark mode */
+      @keyframes card1FlowDark {
+        0%, 33.33% {
+          background-color: rgb(31 41 55);
+          border-color: rgba(0, 163, 108, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.1);
+        }
+        33.34%, 100% {
+          background-color: rgba(31, 41, 55, 0.5);
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      @keyframes card2FlowDark {
+        0%, 33.33% {
+          background-color: rgba(31, 41, 55, 0.5);
+          border-color: transparent;
+          box-shadow: none;
+        }
+        33.34%, 66.66% {
+          background-color: rgb(31 41 55);
+          border-color: rgba(0, 163, 108, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.1);
+        }
+        66.67%, 100% {
+          background-color: rgba(31, 41, 55, 0.5);
+          border-color: transparent;
+          box-shadow: none;
+        }
+      }
+
+      @keyframes card3FlowDark {
+        0%, 66.66% {
+          background-color: rgba(31, 41, 55, 0.5);
+          border-color: transparent;
+          box-shadow: none;
+        }
+        66.67%, 100% {
+          background-color: rgb(31 41 55);
+          border-color: rgba(0, 163, 108, 0.3);
+          box-shadow: 0 10px 15px -3px rgba(0, 163, 108, 0.1);
+        }
+      }
+
+      .card-flow-1 {
+        animation: card1FlowLight 9s ease-in-out infinite;
+      }
+      .card-flow-2 {
+        animation: card2FlowLight 9s ease-in-out infinite;
+      }
+      .card-flow-3 {
+        animation: card3FlowLight 9s ease-in-out infinite;
+      }
+
+      .dark .card-flow-1 {
+        animation: card1FlowDark 9s ease-in-out infinite;
+      }
+      .dark .card-flow-2 {
+        animation: card2FlowDark 9s ease-in-out infinite;
+      }
+      .dark .card-flow-3 {
+        animation: card3FlowDark 9s ease-in-out infinite;
       }
 
     </style>

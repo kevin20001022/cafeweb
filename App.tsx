@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { HomePage } from './components/pages/HomePage';
 import { CafetingPassPage } from './components/pages/CafetingPassPage';
 import { PrivacyPage } from './components/pages/PrivacyPage';
+import { AboutPage } from './components/pages/AboutPage';
 import { Footer } from './components/Footer';
-
-export type PageType = 'home' | 'pass' | 'privacy';
 
 function App() {
   const [isDark, setIsDark] = useState(false);
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
+  const location = useLocation();
 
   useEffect(() => {
     // Check system preference or saved preference
@@ -27,6 +27,11 @@ function App() {
     }
   }, [isDark]);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const toggleTheme = () => {
     setIsDark(!isDark);
   };
@@ -36,13 +41,16 @@ function App() {
       <Header
         toggleTheme={toggleTheme}
         isDark={isDark}
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
       />
       <main>
-        {currentPage === 'home' ? <HomePage /> : currentPage === 'pass' ? <CafetingPassPage /> : <PrivacyPage />}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/pass" element={<CafetingPassPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/privacy" element={<PrivacyPage />} />
+        </Routes>
       </main>
-      <Footer currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <Footer />
     </div>
   );
 }
