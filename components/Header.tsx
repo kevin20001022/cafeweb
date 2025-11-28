@@ -37,10 +37,10 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
     setMobileMenuOpen(false);
   };
 
-  const currentPage = location.pathname === '/' ? 'home' : location.pathname === '/pass' ? 'pass' : location.pathname === '/about' ? 'about' : 'privacy';
+  const currentPage = location.pathname === '/' ? 'home' : location.pathname === '/pass' ? 'pass' : location.pathname === '/contribute' ? 'contribute' : location.pathname === '/about' ? 'about' : 'privacy';
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'backdrop-blur-md shadow-sm py-3' : 'py-5'} ${!scrolled ? 'bg-transparent' : (currentPage === 'pass' || currentPage === 'about') ? 'bg-white/80 dark:bg-[#111111]/80' : ''}`} style={scrolled && currentPage === 'home' ? {backgroundColor: 'rgba(17, 17, 17, 0.8)'} : undefined}>
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${scrolled ? 'backdrop-blur-md shadow-sm py-3' : 'py-5'} ${!scrolled ? 'bg-transparent' : (currentPage === 'pass' || currentPage === 'contribute' || currentPage === 'about') ? 'bg-white/80 dark:bg-[#111111]/80' : ''}`} style={scrolled && currentPage === 'home' ? {backgroundColor: 'rgba(17, 17, 17, 0.8)'} : undefined}>
       <div className="max-w-7xl mx-auto px-6 lg:px-8 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 cursor-pointer group">
            <div className="w-8 h-8 bg-cafeting-black dark:bg-transparent rounded-lg flex items-center justify-center p-1 transition-colors duration-300">
@@ -74,14 +74,14 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
              </span>
            </NavLink>
            <NavLink
-             to="/about"
+             to="/contribute"
              className={({ isActive }) => `text-sm font-medium transition-colors ${
                isActive
                  ? 'text-cafeting-green'
                  : 'text-cafeting-gray dark:text-gray-400 hover:text-cafeting-black dark:hover:text-white'
              }`}
            >
-             關於我們
+             貢獻資訊
            </NavLink>
 
            {/* Theme Toggle - Only show on Cafeting Pass page */}
@@ -175,6 +175,18 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
               </span>
             </NavLink>
 
+            <NavLink
+              to="/contribute"
+              onClick={closeMobileMenu}
+              className={({ isActive }) => `text-left text-lg font-medium transition-all py-4 px-3 rounded-lg ${
+                isActive
+                  ? 'text-white'
+                  : 'text-gray-400 hover:text-white'
+              }`}
+            >
+              貢獻資訊
+            </NavLink>
+
             {/* Download App */}
             <button
               onClick={() => {
@@ -185,15 +197,6 @@ export const Header: React.FC<HeaderProps> = ({ toggleTheme, isDark }) => {
             >
               下載 App
             </button>
-
-            {/* 关于我们 */}
-            <NavLink
-              to="/about"
-              onClick={closeMobileMenu}
-              className="text-left text-lg font-medium text-gray-400 hover:text-white transition-all py-4 px-3 rounded-lg"
-            >
-              關於我們
-            </NavLink>
 
             {/* Privacy Policy */}
             <NavLink

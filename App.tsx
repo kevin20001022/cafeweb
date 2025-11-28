@@ -5,6 +5,7 @@ import { HomePage } from './components/pages/HomePage';
 import { CafetingPassPage } from './components/pages/CafetingPassPage';
 import { PrivacyPage } from './components/pages/PrivacyPage';
 import { AboutPage } from './components/pages/AboutPage';
+import { ContributePage } from './components/pages/ContributePage';
 import { Footer } from './components/Footer';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/pass" element={<CafetingPassPage />} />
+          <Route path="/contribute" element={<ContributePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
