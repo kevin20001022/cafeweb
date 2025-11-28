@@ -1,6 +1,10 @@
+import dotenv from 'dotenv';
 import express from 'express';
 import cors from 'cors';
 import { Client } from '@notionhq/client';
+
+// Load environment variables from .env.local
+dotenv.config({ path: '.env.local' });
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -96,9 +100,6 @@ app.post('/api/submit-cafe', async (req, res) => {
   try {
     const { cafeName, lighting, noise, socket, seats, timeLimit } = req.body;
 
-    // 调试：打印接收到的数据
-    console.log('Received cafe data:', { cafeName, lighting, noise, socket, seats, timeLimit });
-
     // 验证必填字段
     if (!cafeName || !lighting || !noise || !socket || !seats || !timeLimit) {
       return res.status(400).json({ error: 'Missing required fields' });
@@ -150,7 +151,7 @@ app.post('/api/submit-cafe', async (req, res) => {
             },
           ],
         },
-        Lighting: {
+        "Lighting ": {
           select: {
             name: lightingMap[lighting],
           },
@@ -177,17 +178,6 @@ app.post('/api/submit-cafe', async (req, res) => {
         },
       },
     };
-
-    // 调试：打印要提交的数据
-    console.log('Submitting to Notion:', JSON.stringify(pageData, null, 2));
-
-    // 先获取 database schema 来检查欄位
-    try {
-      const database = await notion.databases.retrieve({ database_id: SHOP_REPORT_DATABASE_ID });
-      console.log('Database properties:', Object.keys(database.properties));
-    } catch (err) {
-      console.error('Failed to retrieve database schema:', err.message);
-    }
 
     // 创建 Notion 页面
     await notion.pages.create(pageData);
