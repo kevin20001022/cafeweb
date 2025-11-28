@@ -15,6 +15,7 @@ const notion = new Client({
 });
 
 const DATABASE_ID = process.env.NOTION_DATABASE_ID;
+const SHOP_REPORT_DATABASE_ID = process.env.NOTION_SHOP_REPORT_DATABASE_ID;
 
 // ⚠️ API 路由必须在静态文件服务之前！
 // 健康检查
@@ -85,6 +86,107 @@ app.post('/api/submit-lead', async (req, res) => {
     console.error('Error submitting to Notion:', error);
     return res.status(500).json({
       error: 'Failed to submit lead',
+      details: error.message
+    });
+  }
+});
+
+// API 路由：提交咖啡厅资讯到 Notion
+app.post('/api/submit-cafe', async (req, res) => {
+  try {
+    const { cafeName, lighting, noise, socket, seats, timeLimit } = req.body;
+
+    // 调试：打印接收到的数据
+    console.log('Received cafe data:', { cafeName, lighting, noise, socket, seats, timeLimit });
+
+    // 验证必填字段
+    if (!cafeName || !lighting || !noise || !socket || !seats || !timeLimit) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    // 映射选项值到中文
+    const lightingMap = {
+      'bright': '光線明亮',
+      'soft': '光線柔和',
+      'dim': '光線昏暗'
+    };
+
+    const noiseMap = {
+      'quiet': '安靜環境',
+      'moderate': '音量適中',
+      'noisy': '有些吵雜'
+    };
+
+    const socketMap = {
+      'abundant': '插座充足',
+      'partial': '部分區域',
+      'limited': '數量有限'
+    };
+
+    const seatsMap = {
+      'often_available': '經常有空位',
+      'sometimes_wait': '偶爾需要等待'
+    };
+
+    const timeLimitMap = {
+      'no_limit': '無時間限制',
+      'weekday_unlimited': '平日不限時',
+      'full_only': '客滿才限時',
+      'time_limited': '有時間限制'
+    };
+
+    // 创建 Notion 页面
+    await notion.pages.create({
+      parent: {
+        database_id: SHOP_REPORT_DATABASE_ID,
+      },
+      properties: {
+        Name: {
+          title: [
+            {
+              text: {
+                content: cafeName,
+              },
+            },
+          ],
+        },
+        Lighting: {
+          select: {
+            name: lightingMap[lighting],
+          },
+        },
+        Noise: {
+          select: {
+            name: noiseMap[noise],
+          },
+        },
+        Outlets: {
+          select: {
+            name: socketMap[socket],
+          },
+        },
+        Availability: {
+          select: {
+            name: seatsMap[seats],
+          },
+        },
+        Time: {
+          select: {
+            name: timeLimitMap[timeLimit],
+          },
+        },
+      },
+    });
+
+    return res.status(200).json({
+      success: true,
+      message: 'Cafe info submitted successfully'
+    });
+
+  } catch (error) {
+    console.error('Error submitting cafe to Notion:', error);
+    return res.status(500).json({
+      error: 'Failed to submit cafe info',
       details: error.message
     });
   }

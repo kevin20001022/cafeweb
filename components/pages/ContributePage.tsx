@@ -95,19 +95,20 @@ export const ContributePage: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // TODO: 集成 Notion API
-      // 这里预留 Notion API 调用的位置
-      // const response = await fetch('/api/notion/contribute', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(formData),
-      // });
+      // 调用后端 API 提交到 Notion
+      const response = await fetch('/api/submit-cafe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-      // 模拟提交
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const data = await response.json();
 
-      console.log('提交的数据:', formData);
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit');
+      }
 
+      console.log('提交成功:', data);
       setSubmitStatus('success');
 
       // 重置表单
