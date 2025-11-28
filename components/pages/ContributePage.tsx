@@ -43,7 +43,7 @@ interface SelectionChipsProps {
 
 const SelectionChips: React.FC<SelectionChipsProps> = ({ options, selected, onChange }) => {
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="grid grid-cols-2 gap-3">
       {options.map((option) => {
         const [english, chinese] = option.label.split('\n');
         return (
@@ -51,7 +51,7 @@ const SelectionChips: React.FC<SelectionChipsProps> = ({ options, selected, onCh
             key={option.value}
             type="button"
             onClick={() => onChange(option.value)}
-            className={`px-6 py-4 rounded-xl text-sm font-medium transition-all duration-200 border-2 min-w-[140px] ${
+            className={`px-4 py-4 rounded-xl text-sm font-medium transition-all duration-200 border-2 ${
               selected === option.value
                 ? 'bg-cafeting-green/10 dark:bg-cafeting-green/20 border-cafeting-green text-cafeting-black dark:text-white shadow-sm'
                 : 'bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 text-cafeting-gray dark:text-gray-400 hover:border-gray-300 dark:hover:border-gray-600'
