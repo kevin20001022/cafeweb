@@ -135,8 +135,8 @@ app.post('/api/submit-cafe', async (req, res) => {
       'time_limited': '有時間限制'
     };
 
-    // 创建 Notion 页面
-    await notion.pages.create({
+    // 准备要创建的数据
+    const pageData = {
       parent: {
         database_id: SHOP_REPORT_DATABASE_ID,
       },
@@ -176,7 +176,21 @@ app.post('/api/submit-cafe', async (req, res) => {
           },
         },
       },
-    });
+    };
+
+    // 调试：打印要提交的数据
+    console.log('Submitting to Notion:', JSON.stringify(pageData, null, 2));
+
+    // 先获取 database schema 来检查欄位
+    try {
+      const database = await notion.databases.retrieve({ database_id: SHOP_REPORT_DATABASE_ID });
+      console.log('Database properties:', Object.keys(database.properties));
+    } catch (err) {
+      console.error('Failed to retrieve database schema:', err.message);
+    }
+
+    // 创建 Notion 页面
+    await notion.pages.create(pageData);
 
     return res.status(200).json({
       success: true,
